@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="TechNet - نادي الجامعة لتمكين الطلاب من خلال العلاقات العامة والتكنولوجيا والإعلام والتصميم">
+    <title>TechNet | الابتكار والتميز</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="bg-animation">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <img src="logo.png" alt="TechNet Logo" class="logo-img">
+                <span>TechNet</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active">الرئيسية</a></li>
+                <li><a href="#about" class="nav-link">من نحن</a></li>
+                <li><a href="#departments" class="nav-link">الأقسام</a></li>
+                <li><a href="#contact" class="nav-link">تواصل معنا</a></li>
+            </ul>
+            <a href="#contact" class="nav-cta">انضم إلينا</a>
+            <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge"><span class="badge-dot"></span>مرحباً بكم في مجتمعنا</div>
+            <h1 class="hero-title">نُمكّن <span class="gradient-text">قادة المستقبل</span> من خلال الابتكار</h1>
+            <p class="hero-subtitle">انضم إلى مجتمع نابض بالحياة من الطلاب المتحمسين في Public Relations والتكنولوجيا
+                والإعلام والتصميم.</p>
+            <div class="hero-actions">
+                <a href="#departments" class="btn btn-primary"><span>استكشف الأقسام</span></a>
+                <a href="#about" class="btn btn-secondary"><span>اعرف المزيد</span></a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><span class="stat-number">+500</span><span class="stat-label">عضو</span></div>
+                <div class="stat-divider"></div>
+                <div class="stat-item"><span class="stat-number">4</span><span class="stat-label">أقسام</span></div>
+                <div class="stat-divider"></div>
+                <div class="stat-item"><span class="stat-number">+50</span><span class="stat-label">فعالية/سنوياً</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">من نحن</span>
+                <h2 class="section-title">نبني <span class="gradient-text">قادة الغد</span></h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">🎯</div>
+                    <h3>رسالتنا</h3>
+                    <p>تمكين الطلاب بالمهارات العملية وفرص القيادة ومنصة لإظهار مواهبهم.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">🚀</div>
+                    <h3>رؤيتنا</h3>
+                    <p>أن نصبح المنظمة الطلابية الرائدة التي تربط التعلم الأكاديمي بالخبرة المهنية الحقيقية.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">🤝</div>
+                    <h3>مجتمعنا</h3>
+                    <p>انضم إلى مجتمع متنوع من الطلاب المتحمسين من جميع الخلفيات، متحدين بالسعي نحو التميز.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="departments" id="departments">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">أقسامنا</span>
+                <h2 class="section-title">أربع ركائز من <span class="gradient-text">التميز</span></h2>
+            </div>
+            <div class="dept-grid">
+                <div class="dept-card" data-dept="pr">
+                    <div class="dept-icon">💬</div>
+                    <h3>Public Relations</h3>
+                    <p>أتقن فن التواصل والتشبيك وإدارة العلامة التجارية. ابنِ علاقات تدوم مدى الحياة.</p>
+                    <ul class="dept-features">
+                        <li>التواصل الاستراتيجي</li>
+                        <li>تنسيق الفعاليات</li>
+                        <li>إشراك أصحاب المصلحة</li>
+                    </ul>
+                </div>
+                <div class="dept-card" data-dept="tech">
+                    <div class="dept-icon">💻</div>
+                    <h3>TechNet Academy</h3>
+                    <p>انغمس في عالم التكنولوجيا. تعلم البرمجة والذكاء الاصطناعي والأمن السيبراني والمهارات التقنية
+                        المتقدمة.</p>
+                    <ul class="dept-features">
+                        <li>تطوير الويب</li>
+                        <li>الذكاء الاصطناعي والتعلم الآلي</li>
+                        <li>الأمن السيبراني</li>
+                    </ul>
+                </div>
+                <div class="dept-card" data-dept="media">
+                    <div class="dept-icon">🎬</div>
+                    <h3>Media</h3>
+                    <p>أنشئ محتوى جذاب من خلال إنتاج الفيديو والتصوير والبودكاست وسرد القصص عبر وسائل التواصل الاجتماعي.
+                    </p>
+                    <ul class="dept-features">
+                        <li>إنتاج الفيديو</li>
+                        <li>التصوير الفوتوغرافي</li>
+                        <li>إنشاء المحتوى</li>
+                    </ul>
+                </div>
+                <div class="dept-card" data-dept="design">
+                    <div class="dept-icon">🎨</div>
+                    <h3>Designers</h3>
+                    <p>أطلق العنان لإبداعك في التصميم الجرافيكي وواجهات المستخدم والعلامات التجارية وسرد القصص البصرية.
+                    </p>
+                    <ul class="dept-features">
+                        <li>التصميم الجرافيكي</li>
+                        <li>تصميم UI/UX</li>
+                        <li>الرسوم المتحركة</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <span class="section-tag">تواصل معنا</span>
+                    <h2 class="section-title">هل أنت مستعد <span class="gradient-text">للانضمام إلينا</span>؟</h2>
+                    <p>اتخذ الخطوة الأولى نحو رحلة مذهلة. املأ النموذج وسنتواصل معك خلال 24 ساعة.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">انستغرام</a>
+                        <a href="#" class="social-link">تويتر</a>
+                        <a href="#" class="social-link">لينكدإن</a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group"><label for="name">الاسم الكامل</label><input type="text" id="name"
+                            name="name" required></div>
+                    <div class="form-group"><label for="email">البريد الإلكتروني</label><input type="email" id="email"
+                            name="email" required></div>
+                    <div class="form-group"><label for="phone">رقم الهاتف</label><input type="tel" id="phone"
+                            name="phone" required placeholder="05xxxxxxxx"></div>
+                    <div class="form-group"><label for="department">القسم المفضل</label>
+                        <select id="department" name="department" required>
+                            <option value="">اختر قسماً</option>
+                            <option value="Public Relations">Public Relations</option>
+                            <option value="TechNet Academy">TechNet Academy</option>
+                            <option value="Media">Media</option>
+                            <option value="Designers">Designers</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label for="message">رسالة (اختياري)</label><textarea id="message"
+                            name="message" rows="4"></textarea></div>
+                    <button type="submit" class="btn btn-primary btn-full">إرسال الطلب</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo.png" alt="TechNet Logo" class="logo-img"><span>TechNet</span>
+                </div>
+                <p>&copy; 2024 TechNet. جميع الحقوق محفوظة. صنع بكل ❤️</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
