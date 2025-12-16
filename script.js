@@ -82,6 +82,39 @@ document.head.appendChild(style);
 // Google Forms URL - Submit to formResponse endpoint
 const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdSJGnsjl9TzIzwqIw80nvurEIfRFLzhXyQc_s1ngTNAJy58g/formResponse";
 
+// Department selection handler - Show/hide conditional fields
+const departmentSelect = document.getElementById('department');
+const roleGroup = document.getElementById('roleGroup');
+const portfolioGroup = document.getElementById('portfolioGroup');
+const roleSelect = document.getElementById('role');
+const portfolioInput = document.getElementById('portfolio');
+
+departmentSelect?.addEventListener('change', function () {
+    const selectedDept = this.value;
+
+    // Hide all conditional fields first
+    roleGroup.style.display = 'none';
+    portfolioGroup.style.display = 'none';
+
+    // Reset the hidden fields
+    roleSelect.value = '';
+    roleSelect.removeAttribute('required');
+    portfolioInput.value = '';
+    portfolioInput.removeAttribute('required');
+
+    // Show role selection for Creatives and TechNet Academy
+    if (selectedDept === 'Creatives' || selectedDept === 'TechNet Academy') {
+        roleGroup.style.display = 'block';
+        roleSelect.setAttribute('required', 'required');
+    }
+
+    // Show portfolio upload for Designers
+    if (selectedDept === 'Designers') {
+        portfolioGroup.style.display = 'block';
+        portfolioInput.setAttribute('required', 'required');
+    }
+});
+
 // Form submission (STORE REQUESTS + GOOGLE FORMS)
 const contactForm = document.getElementById('contactForm');
 
@@ -116,44 +149,70 @@ contactForm?.addEventListener('submit', (e) => {
 
 // Function to submit data to Google Forms
 function submitToGoogleForms(data) {
-    // Create a hidden iframe for form submission
+    // Debug: Log the data being sent
+    console.log('📤 Sending to Google Forms:', data);
+
+    // Map your form fields to Google Form entry IDs
+    // Based on actual Google Form field order
+    const fieldMapping = {
+        'entry.128547825': data.name || '',           // 1. الاسم الرباعي
+        'entry.1925269306': data.email || '',         // 2. الايميل الجامعي
+        'entry.1955412134': data.studentId || '',     // 3. الرقم الجامعي
+        'entry.520145743': data.phone || '',          // 4. رقم الهاتف
+        'entry.168880819': data.department || '',     // 5. القسم
+        'entry.1023590285': data.role || '',          // 6. المنصب
+        'entry.486104639': data.portfolio || '',      // 7. رابط الاعمال السابقة
+        'entry.1641401705': data.message || '',       // 8. ماللذي يجعلك تختار هذا القسم
+        'entry.1155585909': data.experience || ''     // 9. خبرات سابقة
+    };
+
+    // Build URL with parameters
+    const params = new URLSearchParams(fieldMapping);
+    const submitUrl = GOOGLE_FORM_ACTION_URL + '?' + params.toString();
+
+    console.log('📤 Submit URL:', submitUrl);
+
+    // Method 1: Use fetch with no-cors mode
+    fetch(submitUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: params
+    }).then(() => {
+        console.log('✅ Form submitted successfully');
+    }).catch(error => {
+        console.log('⚠️ Fetch error (normal for cross-origin):', error);
+    });
+
+    // Method 2: Backup - Use hidden iframe as fallback
     const iframe = document.createElement('iframe');
-    iframe.name = 'hidden_iframe';
+    iframe.name = 'hidden_iframe_' + Date.now();
     iframe.style.display = 'none';
     document.body.appendChild(iframe);
 
-    // Create a form to submit to Google Forms
-    const googleForm = document.createElement('form');
-    googleForm.method = 'POST';
-    googleForm.action = GOOGLE_FORM_ACTION_URL;
-    googleForm.target = 'hidden_iframe';
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = GOOGLE_FORM_ACTION_URL;
+    form.target = iframe.name;
 
-    // Map your form fields to Google Form entry IDs
-    const fieldMapping = {
-        'entry.128547825': data.name,       // Full Name (الاسم الرباعي)
-        'entry.1925269306': data.email,     // Email (الايميل الجامعي)
-        'entry.520145743': data.phone,      // Phone (رقم الهاتف)
-        'entry.168880819': data.department, // Department (القسم)
-        'entry.1641401705': data.message    // Message (الرسالة)
-    };
-
-    // Add hidden inputs for each field
-    for (const [entryId, value] of Object.entries(fieldMapping)) {
+    for (const [key, value] of Object.entries(fieldMapping)) {
         const input = document.createElement('input');
         input.type = 'hidden';
-        input.name = entryId;
-        input.value = value || '';
-        googleForm.appendChild(input);
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
     }
 
-    document.body.appendChild(googleForm);
-    googleForm.submit();
+    document.body.appendChild(form);
+    form.submit();
 
-    // Cleanup after submission
+    // Cleanup
     setTimeout(() => {
-        document.body.removeChild(googleForm);
-        document.body.removeChild(iframe);
-    }, 1000);
+        if (form.parentNode) form.parentNode.removeChild(form);
+        if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+    }, 2000);
 }
 
 // Department card hover effects
